@@ -61,4 +61,15 @@ require("transparent").setup({
   extra_groups = {}, -- table: additional groups that should be cleared
   exclude_groups = {}, -- table: groups you don't want to clear
 })
-require("pluginsconfig.lsp")
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+lspconfig.tsserver.setup {}
+lspconfig.gopls.setup{}
+lspconfig.html.setup{}
+lspconfig.emmet_ls.setup{}
+lspconfig.jsonls.setup{}
+lspconfig.tailwindcss.setup{
+	filetypes = { "html",  "javascriptreact", "typescriptreact"},
+}
+lspconfig.pyright.setup {}
+
