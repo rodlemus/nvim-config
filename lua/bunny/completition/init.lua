@@ -20,7 +20,7 @@ cmp.setup {
         fallback()
       end
     end, { "i", "s" }),
-    ["<C-n>"] = cmp.mapping(function(fallback)
+    ["<TAB>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.choice_active() then
@@ -30,7 +30,7 @@ cmp.setup {
       end
     end, { "i", "s" }),
     ["<C-p>"] = cmp.mapping.select_prev_item(),
-    ["<C-y>"] = cmp.mapping.confirm {
+    ["<cr>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
@@ -75,7 +75,6 @@ cmp.setup {
         nvim_lua = "[api]",
         path = "[path]",
         luasnip = "[snip]",
-        ["vim-dadbod-completion"] = "[DB]",
       },
     },
   },
@@ -122,10 +121,3 @@ cmp.setup.cmdline(":", {
   }),
 })
 
-cmp.setup.filetype({ "sql", "mysql", "plsql" }, {
-  sources = cmp.config.sources({
-    { name = "vim-dadbod-completion" },
-  }, {
-    { name = "buffer" },
-  }),
-})
